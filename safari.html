@@ -6,79 +6,6 @@
 
     <title>Welcome to Zoo</title>
 </head>
-<body class="container mt-4">
-    <h2 class="text-center mb-4">Roshini Naguru goes on safair</h2>
-    <div>Click on the locations to find rare animals, watch out for the lion</div>
-    <div id = "location">Number of locations checked is zero.</div>
-    <div id = "score">Score is zero.</div>
-    <div>Click for help.</div>
-    <div id = "help">Help report</div>
-
-    <div class="game-field">
-    <div class="row">
-        <div class="column">
-            <img src="tree.png">
-            <img src="tree.png">
-            <img src="tree.png">
-            <img src="tree.png">
-            <img src="tree.png">
-            <img src="tree.png">
-        </div>
-    </div>
-    <div class="row">
-        <div class="column">
-            <img src="tree.png">
-            <img src="tree.png">
-            <img src="tree.png">
-            <img src="tree.png">
-            <img src="tree.png">
-            <img src="tree.png">
-        </div>
-    </div>
-    <div class="row">
-        <div class="column">
-            <img src="tree.png">
-            <img src="tree.png">
-            <img src="tree.png">
-            <img src="tree.png">
-            <img src="tree.png">
-            <img src="tree.png">
-        </div>
-    </div>
-    
-    <div class="row">
-        <div class="column">
-            <img src="tree.png">
-            <img src="tree.png">
-            <img src="tree.png">
-            <img src="tree.png">
-            <img src="tree.png">
-            <img src="tree.png">
-        </div>
-    </div>
-    <div class="row">
-        <div class="column">
-            <img src="tree.png">
-            <img src="tree.png">
-            <img src="tree.png">
-            <img src="tree.png">
-            <img src="tree.png">
-            <img src="tree.png">
-        </div>
-    </div>
-    <div class="row">
-        <div class="column">
-            <img src="tree.png">
-            <img src="tree.png">
-            <img src="tree.png">
-            <img src="tree.png">
-            <img src="tree.png">
-            <img src="tree.png">
-        </div>
-    </div>
-    </div>
-</body>
-
 <style>
     body{ background-color: lavender;}
     div{font-family: Georgia, 'Times New Roman', Times, serif; margin: 20px;}
@@ -87,5 +14,83 @@
             width: 100px;
             height: 100px;
         }
+    .box {
+            padding: 12px;
+            border: 1px solid #ccc;
+            margin: 12px 0;
+            background-color: #fff;
+            border-radius: 8px;
+            
+        }
+        .game-field {
+            display: grid;
+            grid-template-columns: repeat(6, 100px);
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .location {
+            width: 100px;
+            height: 100px;
+        }
+
+        .location img {
+            width: 100px;
+            height: 100px;
+        }
+
 </style>
+<body class="container mt-4">
+    <h2 class="text-center mb-4">Roshini Naguru goes on safair</h2>
+    <div class="box">Click on the locations to find rare animals, watch out for the lion</div>
+    <div class="box"id = "location">Number of locations checked is zero.</div>
+    <div class="box" id = "score">Score is zero.</div>
+    <div class="box">Click for help.</div>
+    <div class="box" id = "help">Help report</div>
+
+    <div class="game-field">
+        <div class="location"><img src="tree.png" alt="Tree"></div>
+        <div class="location"><img src="tree.png" alt="Tree"></div>
+        <div class="location"><img src="tree.png" alt="Tree"></div>
+        <div class="location"><img src="tree.png" alt="Tree"></div>
+        <div class="location"><img src="tree.png" alt="Tree"></div>
+        <div class="location"><img src="tree.png" alt="Tree"></div>
+
+        <div class="location"><img src="tree.png" alt="Tree"></div>
+        <div class="location"><img src="tree.png" alt="Tree"></div>
+        <div class="location"><img src="tree.png" alt="Tree"></div>
+        <div class="location"><img src="tree.png" alt="Tree"></div>
+        <div class="location"><img src="tree.png" alt="Tree"></div>
+        <div class="location"><img src="tree.png" alt="Tree"></div>
+
+        <div class="location"><img src="tree.png" alt="Tree"></div>
+        <div class="location"><img src="tree.png" alt="Tree"></div>
+        <div class="location"><img src="tree.png" alt="Tree"></div>
+        <div class="location"><img src="tree.png" alt="Tree"></div>
+        <div class="location"><img src="tree.png" alt="Tree"></div>
+        <div class="location"><img src="tree.png" alt="Tree"></div>
+
+        <div class="location"><img src="tree.png" alt="Tree"></div>
+        <div class="location"><img src="tree.png" alt="Tree"></div>
+        <div class="location"><img src="tree.png" alt="Tree"></div>
+        <div class="location"><img src="tree.png" alt="Tree"></div>
+        <div class="location"><img src="tree.png" alt="Tree"></div>
+        <div class="location"><img src="tree.png" alt="Tree"></div>
+
+        <div class="location"><img src="tree.png" alt="Tree"></div>
+        <div class="location"><img src="tree.png" alt="Tree"></div>
+        <div class="location"><img src="tree.png" alt="Tree"></div>
+        <div class="location"><img src="tree.png" alt="Tree"></div>
+        <div class="location"><img src="tree.png" alt="Tree"></div>
+        <div class="location"><img src="tree.png" alt="Tree"></div>
+
+        <div class="location"><img src="tree.png" alt="Tree"></div>
+        <div class="location"><img src="tree.png" alt="Tree"></div>
+        <div class="location"><img src="tree.png" alt="Tree"></div>
+        <div class="location"><img src="tree.png" alt="Tree"></div>
+        <div class="location"><img src="tree.png" alt="Tree"></div>
+        <div class="location"><img src="tree.png" alt="Tree"></div>
+    </div>
+
+</body>
 </html>
