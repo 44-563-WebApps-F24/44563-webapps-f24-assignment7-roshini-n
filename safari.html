@@ -59,8 +59,7 @@
         <div class="location"><img id="img2" src="tree.png" alt="Tree" onclick="check(2)"></div>
         <div class="location"><img id="img3" src="tree.png" alt="Tree" onclick="check(3)"></div>
         <div class="location"><img id="img4" src="tree.png" alt="Tree" onclick="check(4)"></div>
-        <div class="location"><img id="img5" src="tree.png" alt="Tree" onclick="check(5)"></div>
-
+        <div class="location"><img id="img5" src="tree.png" alt="Tree" onclick="check(5)"></div>-
         <div class="location"><img id="img6" src="tree.png" alt="Tree" onclick="check(6)"></div>
         <div class="location"><img id="img7" src="tree.png" alt="Tree" onclick="check(7)"></div>
         <div class="location"><img id="img8" src="tree.png" alt="Tree" onclick="check(8)"></div>
@@ -131,47 +130,43 @@
         }
 
         function help() {
-            // Step 1: Get row and column for the last location
-            const col = lastLocation % 6; // column (mod 6)
-            const row = Math.floor(lastLocation / 6); // row (divide by 6)
+            
+            const col = lastLocation % 6;
+            const row = Math.floor(lastLocation / 6);
 
-            // Step 2: Calculate the neighbors (left, right, up, down)
+            
             const neighbors = [
-                lastLocation - 1,  // left
-                lastLocation + 1,  // right
-                lastLocation - 6,  // up
-                lastLocation + 6   // down
+                lastLocation - 1,  
+                lastLocation + 1,  
+                lastLocation - 6, 
+                lastLocation + 6   
             ];
 
-            // Step 3: Handle wrap-around: ensure neighbors stay within the grid
-            neighbors[0] = (col > 0) ? neighbors[0] : -1; // No left neighbor if at the first column
-            neighbors[1] = (col < 5) ? neighbors[1] : -1; // No right neighbor if at the last column
-            neighbors[2] = (row > 0) ? neighbors[2] : -1; // No upward neighbor if at the top row
-            neighbors[3] = (row < 5) ? neighbors[3] : -1; // No downward neighbor if at the bottom row
+            
+            neighbors[0] = (col > 0) ? neighbors[0] : -1; 
+            neighbors[1] = (col < 5) ? neighbors[1] : -1;
+            neighbors[2] = (row > 0) ? neighbors[2] : -1; 
+            neighbors[3] = (row < 5) ? neighbors[3] : -1; 
 
-            // Step 4: Check if any of the neighbors are zebra locations
+            
             for (let loc of neighbors) {
                 if (loc >= 0 && zebraLocations.includes(loc)) {
                     document.getElementById('help').textContent = "I see stripes";
-                    return; // Exit function after finding a zebra
+                    return; 
                 }
             }
 
-            // Step 5: Check if the lion is near the last location
             const lionRow = Math.floor(lionLocation / 6);
             const lionCol = lionLocation % 6;
 
-            // Step 6: Calculate row and column differences between the lion and last location
             const rowDiff = Math.abs(lionRow - row);
             const colDiff = Math.abs(lionCol - col);
 
-            // Step 7: If the lion is adjacent (within one cell), return "Rawr"
             if (rowDiff <= 1 && colDiff <= 1) {
                 document.getElementById('help').textContent = "Rawr";
                 return;
             }
-
-            // Step 8: If none of the above conditions are met, return "It's grey"
+         
             document.getElementById('help').textContent = "It's grey";
         }
 </script>
