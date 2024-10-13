@@ -14,14 +14,6 @@
             width: 100px;
             height: 100px;
         }
-    .box {
-            padding: 12px;
-            border: 1px solid #ccc;
-            margin: 12px 0;
-            background-color: #fff;
-            border-radius: 8px;
-            
-        }
         .game-field {
             display: grid;
             grid-template-columns: repeat(6, 100px);
@@ -39,58 +31,149 @@
             height: 100px;
         }
 
+        #help {
+            cursor: pointer;
+            color: blue;
+        }
+        .info-box {
+            border: 2px solid #4CAF50;
+            padding: 12px;
+            margin: 12px 0;
+            background-color: #fff;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+        
 </style>
 <body class="container mt-4">
     <h2 class="text-center mb-4">Roshini Naguru goes on safair</h2>
-    <div class="box">Click on the locations to find rare animals, watch out for the lion</div>
-    <div class="box"id = "location">Number of locations checked is zero.</div>
-    <div class="box" id = "score">Score is zero.</div>
-    <div class="box">Click for help.</div>
-    <div class="box" id = "help">Help report</div>
+    <div class="info-box">Click on the locations to find rare animals, watch out for the lion!</div>
+    <div class="info-box" id="locations">Number of locations checked is zero.</div>
+    <div class="info-box" id="score">Score is zero.</div>
+    <div class="info-box" id="help" onclick="help()">Click for help</div>
+    <div class="info-box" id = "help">Help report</div>
 
     <div class="game-field">
-        <div class="location"><img src="tree.png" alt="Tree"></div>
-        <div class="location"><img src="tree.png" alt="Tree"></div>
-        <div class="location"><img src="tree.png" alt="Tree"></div>
-        <div class="location"><img src="tree.png" alt="Tree"></div>
-        <div class="location"><img src="tree.png" alt="Tree"></div>
-        <div class="location"><img src="tree.png" alt="Tree"></div>
+        <div class="location"><img id="img0" src="tree.png" alt="Tree" onclick="check(0)"></div>
+        <div class="location"><img id="img1" src="tree.png" alt="Tree" onclick="check(1)"></div>
+        <div class="location"><img id="img2" src="tree.png" alt="Tree" onclick="check(2)"></div>
+        <div class="location"><img id="img3" src="tree.png" alt="Tree" onclick="check(3)"></div>
+        <div class="location"><img id="img4" src="tree.png" alt="Tree" onclick="check(4)"></div>
+        <div class="location"><img id="img5" src="tree.png" alt="Tree" onclick="check(5)"></div>
 
-        <div class="location"><img src="tree.png" alt="Tree"></div>
-        <div class="location"><img src="tree.png" alt="Tree"></div>
-        <div class="location"><img src="tree.png" alt="Tree"></div>
-        <div class="location"><img src="tree.png" alt="Tree"></div>
-        <div class="location"><img src="tree.png" alt="Tree"></div>
-        <div class="location"><img src="tree.png" alt="Tree"></div>
+        <div class="location"><img id="img6" src="tree.png" alt="Tree" onclick="check(6)"></div>
+        <div class="location"><img id="img7" src="tree.png" alt="Tree" onclick="check(7)"></div>
+        <div class="location"><img id="img8" src="tree.png" alt="Tree" onclick="check(8)"></div>
+        <div class="location"><img id="img9" src="tree.png" alt="Tree" onclick="check(9)"></div>
+        <div class="location"><img id="img10" src="tree.png" alt="Tree" onclick="check(10)"></div>
+        <div class="location"><img id="img11" src="tree.png" alt="Tree" onclick="check(11)"></div>
 
-        <div class="location"><img src="tree.png" alt="Tree"></div>
-        <div class="location"><img src="tree.png" alt="Tree"></div>
-        <div class="location"><img src="tree.png" alt="Tree"></div>
-        <div class="location"><img src="tree.png" alt="Tree"></div>
-        <div class="location"><img src="tree.png" alt="Tree"></div>
-        <div class="location"><img src="tree.png" alt="Tree"></div>
+        <div class="location"><img id="img12" src="tree.png" alt="Tree" onclick="check(12)"></div>
+        <div class="location"><img id="img13" src="tree.png" alt="Tree" onclick="check(13)"></div>
+        <div class="location"><img id="img14" src="tree.png" alt="Tree" onclick="check(14)"></div>
+        <div class="location"><img id="img15" src="tree.png" alt="Tree" onclick="check(15)"></div>
+        <div class="location"><img id="img16" src="tree.png" alt="Tree" onclick="check(16)"></div>
+        <div class="location"><img id="img17" src="tree.png" alt="Tree" onclick="check(17)"></div>
 
-        <div class="location"><img src="tree.png" alt="Tree"></div>
-        <div class="location"><img src="tree.png" alt="Tree"></div>
-        <div class="location"><img src="tree.png" alt="Tree"></div>
-        <div class="location"><img src="tree.png" alt="Tree"></div>
-        <div class="location"><img src="tree.png" alt="Tree"></div>
-        <div class="location"><img src="tree.png" alt="Tree"></div>
+        <div class="location"><img id="img18" src="tree.png" alt="Tree" onclick="check(18)"></div>
+        <div class="location"><img id="img19" src="tree.png" alt="Tree" onclick="check(19)"></div>
+        <div class="location"><img id="img20" src="tree.png" alt="Tree" onclick="check(20)"></div>
+        <div class="location"><img id="img21" src="tree.png" alt="Tree" onclick="check(21)"></div>
+        <div class="location"><img id="img22" src="tree.png" alt="Tree" onclick="check(22)"></div>
+        <div class="location"><img id="img23" src="tree.png" alt="Tree" onclick="check(23)"></div>
 
-        <div class="location"><img src="tree.png" alt="Tree"></div>
-        <div class="location"><img src="tree.png" alt="Tree"></div>
-        <div class="location"><img src="tree.png" alt="Tree"></div>
-        <div class="location"><img src="tree.png" alt="Tree"></div>
-        <div class="location"><img src="tree.png" alt="Tree"></div>
-        <div class="location"><img src="tree.png" alt="Tree"></div>
+        <div class="location"><img id="img24" src="tree.png" alt="Tree" onclick="check(24)"></div>
+        <div class="location"><img id="img25" src="tree.png" alt="Tree" onclick="check(25)"></div>
+        <div class="location"><img id="img26" src="tree.png" alt="Tree" onclick="check(26)"></div>
+        <div class="location"><img id="img27" src="tree.png" alt="Tree" onclick="check(27)"></div>
+        <div class="location"><img id="img28" src="tree.png" alt="Tree" onclick="check(28)"></div>
+        <div class="location"><img id="img29" src="tree.png" alt="Tree" onclick="check(29)"></div>
 
-        <div class="location"><img src="tree.png" alt="Tree"></div>
-        <div class="location"><img src="tree.png" alt="Tree"></div>
-        <div class="location"><img src="tree.png" alt="Tree"></div>
-        <div class="location"><img src="tree.png" alt="Tree"></div>
-        <div class="location"><img src="tree.png" alt="Tree"></div>
-        <div class="location"><img src="tree.png" alt="Tree"></div>
+        <div class="location"><img id="img30" src="tree.png" alt="Tree" onclick="check(30)"></div>
+        <div class="location"><img id="img31" src="tree.png" alt="Tree" onclick="check(31)"></div>
+        <div class="location"><img id="img32" src="tree.png" alt="Tree" onclick="check(32)"></div>
+        <div class="location"><img id="img33" src="tree.png" alt="Tree" onclick="check(33)"></div>
+        <div class="location"><img id="img34" src="tree.png" alt="Tree" onclick="check(34)"></div>
+        <div class="location"><img id="img35" src="tree.png" alt="Tree" onclick="check(35)"></div>
     </div>
+<script>
+     const ids = Array.from({ length: 36 }, (_, index) => `img${index}`);
+        let score = 0;  
+        let locationsVisited = 0; 
+        let lastLocation = 0; 
+        const zebraLocations = [1, 8, 12, 22, 34]; 
+        const lionLocation = 14; 
+        let gameOver = false; 
+        
+        function check(position) {
+            if (gameOver) return;
 
+            const id = ids[position]; 
+            const imageElement = document.getElementById(id);
+
+            if (position === lionLocation) {
+                imageElement.src = "lion.png"; 
+                gameOver = true; 
+                score -= 2; 
+            } else if (zebraLocations.includes(position)) {
+                imageElement.src = "zebra.png"; 
+                score += 4; 
+            } else {
+                imageElement.src = "elephant.png"; 
+                score += 1;
+            }
+
+            locationsVisited++; 
+
+            document.getElementById('score').textContent = `Score is ${score}`;
+            document.getElementById('locations').textContent = `Number of locations checked is ${locationsVisited}`;
+            lastLocation = position; 
+        }
+
+        function help() {
+            // Step 1: Get row and column for the last location
+            const col = lastLocation % 6; // column (mod 6)
+            const row = Math.floor(lastLocation / 6); // row (divide by 6)
+
+            // Step 2: Calculate the neighbors (left, right, up, down)
+            const neighbors = [
+                lastLocation - 1,  // left
+                lastLocation + 1,  // right
+                lastLocation - 6,  // up
+                lastLocation + 6   // down
+            ];
+
+            // Step 3: Handle wrap-around: ensure neighbors stay within the grid
+            neighbors[0] = (col > 0) ? neighbors[0] : -1; // No left neighbor if at the first column
+            neighbors[1] = (col < 5) ? neighbors[1] : -1; // No right neighbor if at the last column
+            neighbors[2] = (row > 0) ? neighbors[2] : -1; // No upward neighbor if at the top row
+            neighbors[3] = (row < 5) ? neighbors[3] : -1; // No downward neighbor if at the bottom row
+
+            // Step 4: Check if any of the neighbors are zebra locations
+            for (let loc of neighbors) {
+                if (loc >= 0 && zebraLocations.includes(loc)) {
+                    document.getElementById('help').textContent = "I see stripes";
+                    return; // Exit function after finding a zebra
+                }
+            }
+
+            // Step 5: Check if the lion is near the last location
+            const lionRow = Math.floor(lionLocation / 6);
+            const lionCol = lionLocation % 6;
+
+            // Step 6: Calculate row and column differences between the lion and last location
+            const rowDiff = Math.abs(lionRow - row);
+            const colDiff = Math.abs(lionCol - col);
+
+            // Step 7: If the lion is adjacent (within one cell), return "Rawr"
+            if (rowDiff <= 1 && colDiff <= 1) {
+                document.getElementById('help').textContent = "Rawr";
+                return;
+            }
+
+            // Step 8: If none of the above conditions are met, return "It's grey"
+            document.getElementById('help').textContent = "It's grey";
+        }
+</script>
 </body>
 </html>
