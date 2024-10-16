@@ -2,16 +2,33 @@
 <html>
 	<title>builds</title>
  <head> <style>
+	body{
+		background-color: lightblue;
+		font-family: Georgia, 'Times New Roman', Times, serif;
+		margin: 0;
+		padding: 20px;
+		text-align: center;
+	}
+	h2{
+		color: darkred;
+		text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+	}
     .flex-container {
       display: flex;  flex-direction:row;
-      background-color: red;
+      background-color: rgba(98, 56, 435, 0.8); 
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(78, 20, 99, 0.9);
+      margin-bottom: 20px;
   }
 
 .flex-container > div {  /*div children of the flex container*/
   background-color: #f1f1f1; 
   margin: 10px;  padding: 20px;  font-size: 30px;
 }
-
+.flex-container > div:hover {
+    transform: translateY(-5px); 
+    }
 /* Responsive layout */
 @media (max-width: 600px) { 
 	 .flex-container{
@@ -19,18 +36,38 @@
 		 background-color: green;
 	  }
 	}
+	input {
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        button {
+            padding: 10px;
+            font-size: 16px;
+            margin: 5px;
+			background-color: antiquewhite;
+			cursor: pointer;
+        }
+		button:hover {
+            background-color: palevioletred; 
+            transform: scale(1.05); 
+        }
 </style></head>
 <body>
 <h2>Roshini Naguru builds list with divs</h2>
 	<div class="flex-container" id="target">
-	  <div class="queue">row item 1</div>   
-	  <div class="queue">row item 2</div>  
-	  <div class="queue">row item 3</div>  
+		<div class="divlist">row item 1</div>
+		<div class="divlist">row item 2</div>
+		<div class="divlist">row item 3</div>
 	</div>
 
 <p> Press the button to create an new element of type div and then add it to the container.
 	</p>
+	<input type="text" id="inputText" placeholder="Enter text for new item">
 	<button onclick="addEnd()">Add end</button>
+	<button onclick="addFront()">Add front</button>
+    <button onclick="removeMiddle()">Remove</button>
 </body>
 
 <script>
@@ -45,5 +82,33 @@
 		let container = document.getElementById("target");
 		container.appendChild(newElement);
 	}
+	// Function to add a new div to the front of the container
+    function addFront() {
+        /* Get the input value */
+        let inputValue = document.getElementById("inputText").value;
+        
+        /* Create a new div and set its text */
+        let newElement = document.createElement("div");
+        newElement.innerHTML = inputValue;
+        newElement.className = "divlist";
+        
+        /* Insert the new div at the front of the container */
+        let container = document.getElementById("target");
+        container.insertBefore(newElement, container.firstChild);
+    }
+
+    // Function to remove the middle div from the container
+    function removeMiddle() {
+        /* Get all the divs inside the container */
+        let divListItems = document.getElementsByClassName("divlist");
+        let length = divListItems.length;
+        
+        /* Remove the middle div if the container is not empty */
+        if (length > 0) {
+            let middleIndex = Math.floor(length / 2);
+            let container = document.getElementById("target");
+            container.removeChild(divListItems[middleIndex]);
+        }
+    }
 </script>
 </html>
