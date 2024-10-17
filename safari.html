@@ -31,7 +31,7 @@
             height: 100px;
         }
 
-        #help {
+        #helps {
             cursor: pointer;
             color: blue;
         }
@@ -88,10 +88,11 @@
     <div class="info-box">Click on the locations to find rare animals, watch out for the lion!</div>
     <div class="info-box" id="locations">Number of locations checked is zero.</div>
     <div class="info-box" id="score">Score is zero.</div>
-    <div class="info-box" id="help" onclick="help()">Click for help</div>
-    <div class="info-box" id = "help">Help report</div>
+    <div class="info-box" id="helps" onclick="help()">Click for help</div>
+    <div class="info-box" id ="help">Help report</div>
 
-    <div class="game-field">
+
+    <div class="game-field" id="gameField">
         <div class="location"><img id="img0" src="tree.png" alt="Tree" onclick="check(0)"></div>
         <div class="location"><img id="img1" src="tree.png" alt="Tree" onclick="check(1)"></div>
         <div class="location"><img id="img2" src="tree.png" alt="Tree" onclick="check(2)"></div>
@@ -136,16 +137,23 @@
             <li><a href="divlist.html">Build</a></li>
             
         </ul>
-</body>
+
     <script>
         
         const ids = Array.from({ length: 36 }, (_, index) => `img${index}`); 
         let score = 0;  
         let locationsVisited = 0;
         let lastLocation = 0;
-        const zebraLocations = [1, 8, 12, 22, 34]; 
-        let lionLocation = Math.floor(Math.random() * 36);       
+        const lionLocation = Math.floor(Math.random() * 36);;
+            const zebraLocations = [];
+            while (zebraLocations.length < 5) {
+                let randomPosition = Math.floor(Math.random() * 36);
+                if (!zebraLocations.includes(randomPosition) && randomPosition !== lionLocation) {
+                    zebraLocations.push(randomPosition);
+                }
+            }
         let gameOver = false;
+        
         function check(position) {
             if (gameOver) return;    
             const id = ids[position]; 
@@ -169,34 +177,29 @@
             lastLocation = position; 
         }
         function help() {
-            const col = lastLocation % 6; 
-            const row = Math.floor(lastLocation / 6); 
-            const neighbors = [
-                lastLocation - 1,  
-                lastLocation + 1,  
-                lastLocation - 6,  
-                lastLocation + 6   
-            ];
-            neighbors[0] = (col > 0) ? neighbors[0] : -1; 
-            neighbors[1] = (col < 5) ? neighbors[1] : -1; 
-            neighbors[2] = (row > 0) ? neighbors[2] : -1; 
-            neighbors[3] = (row < 5) ? neighbors[3] : -1; 
-            for (let loc of neighbors) {
-                if (loc >= 0 && zebraLocations.includes(loc)) {
-                    document.getElementById('help').textContent = "I see stripes";
-                    return; 
-                }
+            let lastRow = Math.floor(lastLocation / 6);
+            let lastCol = lastLocation % 6;
+            let lionRow = Math.floor(lionLocation / 6);
+            let lionCol = lionLocation % 6;
+   
+            let nearbyLocations = [lastLocation - 1, lastLocation + 1, lastLocation - 6, lastLocation + 6];
+            let zebraNearby = nearbyLocations.some(loc => zebraLocations.includes((loc + 36) % 36));
+   
+            if (zebraNearby) {
+                document.getElementById("help").innerText = "I see stripes.";
+            } else if (Math.abs(lastRow - lionRow) <= 1 && Math.abs(lastCol - lionCol) <= 1) {
+                document.getElementById("help").innerText = "Rawr.";
+            } else {
+                document.getElementById("help").innerText = "It's grey.";
             }
-            const lionRow = Math.floor(lionLocation / 6);
-            const lionCol = lionLocation % 6;
-            const rowDiff = Math.abs(lionRow - row);
-            const colDiff = Math.abs(lionCol - col);
-            if (rowDiff <= 1 && colDiff <= 1) {
-                document.getElementById('help').textContent = "Rawr";
-                return;
-            }
-            document.getElementById('help').textContent = "It's grey";
+        }
+   
+        document.querySelector(".help").onclick = help;
+        function moveLion() {
+            const directions = [-1, 1, -6, 6];
+            const randomDir = directions[Math.floor(Math.random() * directions.length)];
+            lionLocation = (lionLocation + randomDir + 36) % 36;
         }
     </script>
-
+</body>
 </html>
