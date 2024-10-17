@@ -52,7 +52,36 @@
                 font-size: 2em;
             }
         }
-        
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 10px 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+        }
+
+        .navbar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .navbar li {
+            margin: 0 15px;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .navbar a:hover {
+            color: #ff7e5f; 
+        }
 </style>
 <body class="container mt-4">
     <h2 class="text-center mb-4">Roshini Naguru goes on safair</h2>
@@ -100,7 +129,14 @@
         <div class="location"><img id="img34" src="tree.png" alt="Tree" onclick="check(34)"></div>
         <div class="location"><img id="img35" src="tree.png" alt="Tree" onclick="check(35)"></div>
     </div>
-
+    <div class="navbar">
+        <ul>
+            <li><a href="safari.html">Zoo</a></li>
+            <li><a href="precision.html">Time</a></li>
+            <li><a href="divlist.html">Build</a></li>
+            
+        </ul>
+</body>
     <script>
         
         const ids = Array.from({ length: 36 }, (_, index) => `img${index}`); 
@@ -162,5 +198,5 @@
             document.getElementById('help').textContent = "It's grey";
         }
     </script>
-</body>
+
 </html>

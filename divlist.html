@@ -53,6 +53,36 @@
             background-color: palevioletred; 
             transform: scale(1.05); 
         }
+		.navbar {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 10px 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+        }
+
+        .navbar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .navbar li {
+            margin: 0 15px;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .navbar a:hover {
+            color: #ff7e5f; 
+        }
 </style></head>
 <body>
 <h2>Roshini Naguru builds list with divs</h2>
@@ -68,6 +98,14 @@
 	<button onclick="addEnd()">Add end</button>
 	<button onclick="addFront()">Add front</button>
     <button onclick="removeMiddle()">Remove</button>
+	<button onclick="swapElements()">Swap</button>
+	<div class="navbar">
+        <ul>
+            <li><a href="safari.html">Zoo</a></li>
+            <li><a href="precision.html">Time</a></li>
+            <li><a href="divlist.html">Build</a></li>
+            
+        </ul>
 </body>
 
 <script>
@@ -110,6 +148,38 @@
             container.removeChild(divListItems[middleIndex]);
         }
     }
-	
+	function swapElements() {
+    let divListItems = document.getElementsByClassName("divlist");
+    let length = divListItems.length;
+
+    if (length < 2) return;  // Ensure there are at least 2 elements to swap
+
+    // Randomly select two different indices
+    let firstIndex = Math.floor(Math.random() * length);
+    let secondIndex;
+    do {
+        secondIndex = Math.floor(Math.random() * length);
+    } while (secondIndex === firstIndex);  // Ensure the two indices are different
+
+    // Swap the two elements
+    let container = document.getElementById("target");
+    let firstElement = divListItems[firstIndex];
+    let secondElement = divListItems[secondIndex];
+
+    // If the elements are neighbors, use insertBefore logic, otherwise swap using appendChild
+    if (Math.abs(firstIndex - secondIndex) === 1) {
+        if (firstIndex < secondIndex) {
+            container.insertBefore(secondElement, firstElement);  // Swap positions if they are neighbors
+        } else {
+            container.insertBefore(firstElement, secondElement);
+        }
+    } else {
+        let nextFirstElement = firstElement.nextSibling;
+        let nextSecondElement = secondElement.nextSibling;
+        container.insertBefore(firstElement, nextSecondElement);
+        container.insertBefore(secondElement, nextFirstElement);
+    }
+}
+
 </script>
 </html>
