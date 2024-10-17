@@ -27,6 +27,17 @@
       font-size: 16px;
       margin: 10px;
   }
+  button:hover {
+            background-color: #218838;
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4);  
+            transform: scale(1.1); 
+        }
+
+        button#stop:hover {
+            background-color: #c82333;
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4);  
+            transform: scale(1.1); 
+        }
 </style>
 <body>
 
@@ -38,34 +49,59 @@
     <button id="startButton">Start Timer</button>
     <button id="stopButton">Stop Timer</button>
   
-  <script> 
-let stopTime; 
-        let countdownFinished = false; 
+    <script>
+        let stopTime;          
+        let countdownTime;
+        let timerActive = false;  
+        let targetTime = 4000;
+        
+         function generateRandomCountdown() {
+            countdownTime = Math.floor(Math.random() * (10 - 2 + 1)) + 2; 
+            console.log("Random Countdown Time:", countdownTime); 
+        }
+
+       
         function recordTime() {
-            stopTime = Date.now();
-            console.log("Stop Time:", stopTime);
-        }
-        document.getElementById('stopButton').onclick = recordTime;
-        function startTime() {
-            stopTime = undefined; 
-            countdownFinished = false; 
-            document.getElementById('target').innerHTML = "Your time"; 
-            for (let i = 0; i <= 4; i++) {
-                setTimeout(() => {
-                    document.getElementById('counter').innerHTML = 4 - i; 
-                }, i * 1000); 
+            if (timerActive) {
+                stopTime = Date.now();  
+                console.log("Stop Time:", stopTime);  
             }
-            setTimeout(() => {
-                countdownFinished = true; 
-                if (stopTime === undefined) {
-                    document.getElementById('target').innerHTML = "Too Slow";
-                } else {
-                    const elapsedTime = Date.now() - stopTime;
-                    document.getElementById('target').innerHTML = `Time was ${elapsedTime} ms`;
-                }
-            }, 5000); 
         }
-        document.getElementById('startButton').onclick = startTime;
+
+ 
+        document.getElementById('stopButton').onclick = recordTime;
+
+   
+        function startTime() {
+            generateRandomCountdown(); 
+            stopTime = undefined;  
+            timerActive = true;    
+            document.getElementById('target').textContent = "Your time"; 
+            let startTimeValue = Date.now();  
+
+            for (let i = 0; i <= countdownTime; i++) {
+                setTimeout(() => {
+                    document.getElementById('counter').textContent = countdownTime - i;  
+                }, i * 1000);  
+            }
+
+            
+            setTimeout(() => {
+                if (!stopTime) {
+                    
+                    document.getElementById('target').textContent = "Too Slow!";
+                } else {
+                   
+                    const timeDifference = stopTime - (startTimeValue + targetTime);  
+                    document.getElementById('target').textContent = `Time was ${Math.abs(timeDifference)} ms`;
+                }
+                timerActive = false;  
+            }, targetTime);  
+        }
+
+        
+        document.getElementById('startButton').onclick = startTime; 
+
 </script>
 
 </body>

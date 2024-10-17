@@ -43,6 +43,15 @@
             border-radius: 8px;
             border: 1px solid #ccc;
         }
+        @media (max-width: 500px) {
+            .container {
+                width: 90%;
+                padding: 20px;
+            }
+            header {
+                font-size: 2em;
+            }
+        }
         
 </style>
 <body class="container mt-4">
@@ -99,8 +108,7 @@
         let locationsVisited = 0;
         let lastLocation = 0;
         const zebraLocations = [1, 8, 12, 22, 34]; 
-        const lionLocation = 14; 
-        let gameOver = false; 
+        let lionLocation = Math.floor(Math.random() * 36);        let gameOver = false; 
         function check(position) {
             if (gameOver) return;    
             const id = ids[position]; 
@@ -109,6 +117,7 @@
                 imageElement.src = "lion.png";
                 gameOver = true; 
                 score -= 2; 
+                alert("Game Over! You found the lion.");
             } else if (zebraLocations.includes(position)) {
                 imageElement.src = "zebra.png"; 
                 score += 4;
